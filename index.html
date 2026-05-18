@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deportes Pro</title>
+
+<style>
+:root {
+    --bg1:#0f2027;
+    --bg2:#203a43;
+    --bg3:#2c5364;
+
+    --card: rgba(255,255,255,0.08);
+    --hover: rgba(255,255,255,0.15);
+
+    --primary:#4da3ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(0, 12, 30, 0.75), rgba(0, 2, 29, 0.92)),
+        url('/Imagenes/ChatGPT Image 17 may 2026, 09_28_23 p.m..png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white;
+}
+
+/* HEADER */
+
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+header h1 {
+    font-size: 5.2rem;
+    color: #4da3ff;
+
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.6),
+        0 0 12px rgba(77, 163, 255, 0.2);
+
+    border-bottom: 3px solid rgba(77, 163, 255, 0.45);
+
+    display: inline-block;
+
+    padding-bottom: 10px;
+
+    transition: 0.3s ease;
+}
+
+header h1:hover {
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.7),
+        0 0 18px rgba(77,163,255,0.35);
+}
+
+header p {
+    color: rgba(255,255,255,0.78);
+
+    font-size: 1.1rem;
+
+    margin-top: 18px;
+
+    letter-spacing: 1px;
+}
+
+/* CONTENEDOR */
+
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* TITULOS */
+
+section {
+    margin-bottom: 55px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+
+    color: #dce9f7;
+
+    margin-bottom: 22px;
+
+    letter-spacing: 1px;
+
+    border-left: 4px solid #4da3ff;
+
+    padding-left: 14px;
+
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+h3 {
+    font-size: 1.4rem;
+
+    margin-bottom: 10px;
+
+    color: white;
+
+    font-weight: 600;
+}
+
+p {
+    color: rgba(255,255,255,0.88);
+
+    line-height: 1.6;
+
+    font-size: 0.97rem;
+}
+
+small {
+    color: rgba(255,255,255,0.72);
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 18px;
+
+    margin: 20px 0;
+}
+
+/* CARDS */
+
+.card {
+    background: var(--card);
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.35s ease;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+
+    min-height: 240px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.88),
+            rgba(0,0,0,0.18)
+        );
+}
+
+.card * {
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.015);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35),
+        0 0 18px rgba(77,163,255,0.18);
+
+    border: 1px solid rgba(77,163,255,0.18);
+}
+
+/* LINKS */
+
+.card a,
+.card a:visited,
+a,
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* BOTONES */
+
+button {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(77,163,255,0.18),
+            rgba(0,0,0,0.35)
+        );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    border: 1px solid rgba(77,163,255,0.4);
+
+    box-shadow:
+        0 0 12px rgba(77,163,255,0.25),
+        0 0 30px rgba(77,163,255,0.12);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* FORMULARIO */
+
+form {
+    background: rgba(255,255,255,0.08);
+
+    padding: 24px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter: blur(10px);
+    
+}
+
+form button {
+    margin-top: 40px;
+}
+
+input {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 22px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(255,255,255,0.06);
+
+    color: white;
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+input:focus {
+    border: 1px solid rgba(77,163,255,0.5);
+
+    box-shadow:
+        0 0 12px rgba(77,163,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+}
+
+input::placeholder {
+    color: rgba(255,255,255,0.45);
+}
+
+.error {
+    color: #ffb0b0;
+    margin-top: 12px;
+}
+
+.success {
+    color: #a8ffbf;
+    margin-top: 12px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 35px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 0.92rem;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 768px){
+
+    header h1{
+        font-size: 3.5rem;
+    }
+
+    h2{
+        font-size: 1.6rem;
+    }
+
+    .card{
+        min-height: 210px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Deportes Pro</h1>
+    <p>Información deportiva, atletas destacados y cobertura de partidos en tiempo real</p>
+</header>
+
+<div class="container">
+
+<section>
+<h2>Deportes más populares</h2>
+
+<div class="grid">
+
+<div class="card" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1600&auto=format&fit=crop');">
+<h3>Fútbol</h3>
+<p>El deporte con mayor impacto global y una de las industrias deportivas más importantes del mundo.</p>
+<p><b>Referentes:</b> Lionel Messi, Cristiano Ronaldo, Kylian Mbappé</p>
+</div>
+
+<div class="card" style="background-image:url('https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=1600&auto=format&fit=crop');">
+<h3>Baloncesto</h3>
+<p>Disciplina reconocida por su dinamismo, velocidad y alto nivel competitivo internacional.</p>
+<p><b>Referentes:</b> LeBron James, Stephen Curry</p>
+</div>
+
+<div class="card" style="background-image:url('https://images.unsplash.com/photo-1542144582-1ba00456b5e3?q=80&w=1600&auto=format&fit=crop');">
+<h3>Tenis</h3>
+<p>Deporte individual de precisión técnica y gran exigencia física.</p>
+<p><b>Referentes:</b> Novak Djokovic, Carlos Alcaraz</p>
+</div>
+
+<div class="card" style="background-image:url('https://images.unsplash.com/photo-1471295253337-3ceaaedca402?q=80&w=1600&auto=format&fit=crop');">
+<h3>Béisbol</h3>
+<p>Uno de los deportes más influyentes en América y Asia con gran tradición histórica.</p>
+<p><b>Referentes:</b> Shohei Ohtani, Aaron Judge</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>Mejores jugadores</h2>
+
+<div class="grid">
+
+<a class="card"
+href="https://es.wikipedia.org/wiki/Lionel_Messi"
+target="_blank"
+style="background-image:url('https://fcb-abj-pre.s3.amazonaws.com/img/jugadors/MESSI.jpg');">
+
+<h3>Lionel Messi</h3>
+
+<p>Considerado uno de los futbolistas más influyentes y exitosos de la historia.</p>
+
+<p>Consultar biografía completa</p>
+
+</a>
+
+<a class="card"
+href="https://es.wikipedia.org/wiki/Cristiano_Ronaldo"
+target="_blank"
+style="background-image:url('https://img.a.transfermarkt.technology/portrait/big/8198-1748102259.jpg?lm=1');">
+
+<h3>Cristiano Ronaldo</h3>
+
+<p>Reconocido por sus récords goleadores y trayectoria internacional.</p>
+
+<p>Consultar biografía completa</p>
+
+</a>
+
+<a class="card"
+href="https://es.wikipedia.org/wiki/Stephen_Curry"
+target="_blank"
+style="background-image:url('https://heavy.com/wp-content/uploads/2026/03/GettyImages-2254844286-e1772753915287.jpg?quality=65&strip=all&w=780');">
+
+<h3>Stephen Curry</h3>
+
+<p>Figura clave en la evolución moderna del baloncesto profesional.</p>
+
+<p>Consultar biografía completa</p>
+
+</a>
+
+<a class="card"
+href="https://es.wikipedia.org/wiki/Carlos_Alcaraz"
+target="_blank"
+style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5f/Carlos_Alcaraz_2025_FO.jpg');">
+
+<h3>Carlos Alcaraz</h3>
+
+<p>Una de las principales promesas y referentes actuales del tenis mundial.</p>
+
+<p>Consultar biografía completa</p>
+
+</a>
+
+</div>
+</section>
+
+<section>
+
+<h2>Partidos en vivo</h2>
+
+<button id="btn">Cargar partidos recientes</button>
+
+<div id="resultado" class="grid"></div>
+
+</section>
+
+<section>
+
+<h2>Iniciar sesión</h2>
+
+<form id="loginForm">
+
+<input
+type="text"
+id="usuario"
+placeholder="Nombre de usuario">
+
+<input
+type="password"
+id="password"
+placeholder="Contraseña">
+
+<button type="submit">
+Acceder a la plataforma
+</button>
+
+<div id="mensaje"></div>
+
+</form>
+
+</section>
+
+<section>
+
+<h2>Manual de uso</h2>
+
+<a href="manual.html">
+
+<button>
+Abrir guía básica del sistema
+</button>
+
+</a>
+
+</section>
+
+</div>
+
+<footer>
+© 2026 Deportes Pro — Plataforma informativa deportiva
+</footer>
+
+<script>
+document.getElementById("btn").addEventListener("click", async () => {
+
+    const resultado = document.getElementById("resultado");
+
+    resultado.innerHTML = "Cargando información de partidos...";
+
+    try {
+
+        const res = await fetch("https://www.scorebat.com/video-api/v3/");
+
+        const data = await res.json();
+
+        const partidos = data.response.slice(0, 6);
+
+        resultado.innerHTML = partidos.map(p => `
+
+            <div class="card">
+
+                <a href="${p.matchviewUrl}" target="_blank">
+
+                    <h3>${p.title}</h3>
+
+                    <p>${p.competition || "Competición internacional"}</p>
+
+                    <small>Consultar información del partido</small>
+
+                </a>
+
+            </div>
+
+        `).join("");
+
+    } catch (error) {
+
+        resultado.innerHTML = `
+            <p>
+                No fue posible cargar la información de los partidos.
+            </p>
+        `;
+    }
+
+});
+
+const form = document.getElementById("loginForm");
+
+const mensaje = document.getElementById("mensaje");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const usuario =
+        document.getElementById("usuario").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    if(usuario === "" || password === ""){
+
+        mensaje.innerHTML =
+        '<p class="error">Todos los campos son obligatorios.</p>';
+
+        return;
+    }
+
+    if(password.length < 6){
+
+        mensaje.innerHTML =
+        '<p class="error">La contraseña debe contener al menos 6 caracteres.</p>';
+
+        return;
+    }
+
+    mensaje.innerHTML =
+    '<p class="success">Validación completada correctamente.</p>';
+
+});
+</script>
+
+</body>
+</html>
